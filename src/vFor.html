@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FOR循环</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="todo in todos">{{todo.text}}</li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="plugins/vue/dist/vue.min.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                todos :[
+                    {text:'1111111111111111'},
+                    {text:'2222222222222222'},
+                    {text:'3333333333333333'},
+                    {text:'4444444444444444'},
+                    {text:'5555555555555555'},
+                    {text:'6666666666666666'},
+                    {text:'7777777777777777'}
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

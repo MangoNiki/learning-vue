@@ -1,0 +1,20 @@
+{
+  "name": "learning-vue",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "niki"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/MangoNiki/learning-vue",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vue": "^1.0.26"
+  }
+}
