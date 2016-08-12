@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>第一个自定义指令</title>
+</head>
+
+<body>
+    <div id="app" v-my-deirective="{name:'niki',age:23}"></div>
+    <script type="text/javascript" src="../plugins/vue/dist/vue.min.js"></script>
+    <script type="text/javascript">
+    Vue.directive('my-deirective', {
+        bind: function() {
+            // 准备工作
+            // 例如，添加事件处理器或只需要运行一次的高耗任务
+            console.info('bind');
+        },
+        update: function(value) {
+            // 值更新时的工作
+            // 也会以初始值为参数调用一次
+            console.info('update');
+            var innerHTML = [
+                '<h1>my deirective</h1>',
+                '<p>',
+                'my name is ' + value.name + ',',
+                'I\'m ' + value.age + ' years old!',
+                '</p>'
+            ].join('');
+            this.el.innerHTML = innerHTML;
+        },
+        unbind: function() {
+            // 清理工作
+            // 例如，删除 bind() 添加的事件监听器
+            console.info('unbind');
+        }
+    });
+
+    var app = new Vue({
+        el: '#app'
+    });
+    </script>
+</body>
+
+</html>

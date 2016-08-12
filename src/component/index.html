@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>自定义组件实现的几种方式</title>
+</head>
+
+<body>
+    <div id="app">
+        <compt-one></compt-one>
+        <compt-two></compt-two>
+        <compt-three></compt-three>
+        <compt-four></compt-four>
+    </div>
+    <script type="text/javascript" src="../plugins/vue/dist/vue.min.js"></script>
+    <script type="text/javascript">
+    //第一种方式
+    var ComptOne = Vue.extend({
+        template: '<h1>component one</h1>'
+    });
+    Vue.component('compt-one', ComptOne);
+
+    //第二种方式：局部注册
+    var ComptChildOne = Vue.extend({
+        template: '<h2>Child component One</h2>'
+    });
+    var ComptParentOne = Vue.extend({
+        template: '<h1>Parent component</h1><compt-child-one></compt-child-one>',
+        components: {
+            'compt-child-one': ComptChildOne
+        }
+    });
+    Vue.component('compt-two', ComptParentOne);
+
+    //第三种方式：一个步骤中扩展与注册
+    Vue.component('compt-three', {
+        template: '<h1>Component three</h1>'
+    });
+
+    //第四种方式：局部注册
+    var ComptParentTwo = Vue.extend({
+        template: '<h1>Parent component</h1><compt-child-two></compt-child-two>',
+        components: {
+            'compt-child-two': {
+                template: '<h2>Child component Two</h2>'
+            }
+        }
+    });
+    Vue.component('compt-four', ComptParentTwo);
+
+    new Vue({
+        el: '#app'
+    });
+    </script>
+</body>
+
+</html>

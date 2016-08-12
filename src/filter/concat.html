@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>过滤器 | 字符串拼接</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="msg"/>
+        <span>{{msg | concat 'world' | reverse}}</span>
+    </div>
+
+    <script type="text/javascript" src="../plugins/vue/dist/vue.min.js"></script>
+    <script type="text/javascript">
+    Vue.filter('concat', function(value, input) {
+        if(!value){
+            return '';
+        }
+        return value + ' ' + input;
+    });
+
+    Vue.filter('reverse', function(value){
+        if(!value){
+            return '';
+        }
+        return value.split('').reverse().join('');
+    });
+
+    new Vue({
+        el : '#app'
+    });
+
+
+    </script>
+</body>
+
+</html>

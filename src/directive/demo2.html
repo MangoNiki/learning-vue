@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>第二个自定义指令</title>
+</head>
+
+<body>
+    <my-directive id="app"></my-directive>
+    <my-directive id="app"></my-directive>
+
+    <script type="text/javascript" src="../plugins/vue/dist/vue.min.js"></script>
+    <script type="text/javascript">
+    
+    Vue.elementDirective('my-directive',{
+        bind : function(){
+            console.info('bind');
+        }
+    });
+
+    new Vue({
+        el : 'my-directive'
+    });
+
+    </script>
+</body>
+
+</html>

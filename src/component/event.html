@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Events</title>
+</head>
+
+<body>
+    <template id="child-temp">
+        <input type="text" v-model="msg"/>
+        <button v-on:click="notify">Dispatch Event</button>
+    </template>
+    <div id="event-example">
+        <p>Messages:{{message | json}}</p>
+        <child></child>
+    </div>
+    <script type="text/javascript" src="../plugins/vue/dist/vue.min.js"></script>
+    <script type="text/javascript">
+    Vue.component('child',{
+        template : '#child-temp',
+        data : function(){
+            return {
+                msg : 'hello'
+            };
+        },
+        methods : {
+            notify : function(){
+                if(this.msg.trim()){
+                    this.$dispatch('child-msg',this.msg);
+                    this.msg = '';
+                }
+            }
+        }
+    });
+
+    var parent = new Vue({
+        el : '#event-example',
+        data : {
+            message : []
+        },
+        events : {
+            'child-msg' : function(msg){
+                this.message.push(msg);
+            }
+        }
+    });
+
+    Vue.component('');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>过滤器 | 金钱过滤器</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="money | currencyDisplay" />
+        <span>{{money}}</span>
+    </div>
+    <script type="text/javascript" src="../plugins/vue/dist/vue.min.js"></script>
+    <script type="text/javascript">
+    Vue.filter('currencyDisplay', {
+        read: function(value) {
+            if(!value){
+                return;
+            }
+            return '$' + (+value).toFixed(2);
+        },
+        write: function(newVal,oldVal) {
+            var num = +newVal.replace(/[^\d.]/g, '');
+            return isNaN(num) ? 0 : parseFloat(num.toFixed(2));
+        }
+    });
+    new Vue({
+        el: '#app'
+    });
+    </script>
+</body>
+
+</html>

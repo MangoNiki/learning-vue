@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Props</title>
+</head>
+
+<body>
+    <div id="app">
+        <compt-one msg="Hello wolrd"></compt-one>
+        <compt-two my-name="niki"></compt-two>
+
+        <input type="text" v-model="txt"/>
+        <compt-two v-bind:my-name="txt"></compt-two>
+        <compt-two v-bind:my-name.sync="txt"></compt-two>
+        <compt-two v-bind:my-name.once="txt"></compt-two>
+
+        <input type="text" v-model="name"/>
+        <input type="text" v-model="age"/>
+        <compt-three v-bind:name="name" v-bind:age="age"></compt-three>
+    </div>
+    <script type="text/javascript" src="../plugins/vue/dist/vue.min.js"></script>
+    <script type="text/javascript">
+
+    Vue.component('compt-one', {
+        props: ['msg'],
+        template: '<h1>{{msg}}</h1>'
+    });
+
+    Vue.component('compt-two', {
+        props: ['myName'],
+        template: '<h1>{{myName}}</h1>'
+    });
+
+    Vue.component('compt-three', {
+        props: {
+            name : {
+                type:String
+            },
+            age : {
+                type : String,
+                default : '0'
+            }
+        },
+        template: '<h1>{{name}} + {{age}}</h1>'
+    });
+
+    new Vue({
+        el: '#app'
+    });
+    </script>
+</body>
+
+</html>
