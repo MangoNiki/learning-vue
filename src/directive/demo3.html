@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>第三个自定义指令</title>
+</head>
+
+<body>
+    <div id="app" v-my-directive:name.en="username">123456456465</div>
+    <script type="text/javascript" src="../plugins/vue/dist/vue.min.js"></script>
+    <script type="text/javascript">
+    Vue.directive('my-directive', {
+        bind: function() {
+            console.info('-------bind-------');
+        },
+        update: function(value) {
+            console.info('-------update-------');
+            
+            console.info('el' + this.el.innerHTML);//el123456456465
+            console.info('name:' + this.name); //name:my-directive
+            console.info('expression:' + this.expression); //expression:username
+            console.info('arg:' + this.arg); //arg:name
+            console.info('modifiers:' + JSON.stringify(this.modifiers)); //modifiers:{"en":true}
+            console.info(value); //niki
+            console.info(this.descriptor);//包含指令的解析结果
+        },
+        unbind: function() {
+            console.info('-------unbind-------');
+        }
+    })
+
+    new Vue({
+        el: '#app',
+        data : {
+            username :'niki'
+        }
+    });
+    </script>
+</body>
+
+</html>

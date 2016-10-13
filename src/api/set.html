@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Vue set</title>
+</head>
+
+<body>
+    <div id="app">{{msg}}</div>
+    <script type="text/javascript" src="../plugins/vue/dist/vue.min.js"></script>
+    <script type="text/javascript">
+    var data = {
+        msg: '123'
+    };
+    var vm = new Vue({
+        el: '#app',
+        data: data
+    });
+    //Vue.set(data, 'msg', '456');
+    vm.$set('msg','456');
+    </script>
+</body>
+
+</html>
